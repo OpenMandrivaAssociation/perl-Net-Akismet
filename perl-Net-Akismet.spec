@@ -13,6 +13,7 @@ Source:		http://search.cpan.org/CPAN/authors/id/N/NI/NIKOLAY/%{module}-%{version
 Url:		http://search.cpan.org/dist/%{module}
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 Buildrequires:	perl-devel
+BuildRequires:	perl(LWP::UserAgent)
 Requires:	perl 
 Buildarch:	noarch
 
