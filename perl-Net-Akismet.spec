@@ -1,28 +1,27 @@
-%define	module	Net-Akismet
-%define	name	perl-%{module}
-%define	version	0.05
-%define	release	%mkrel 2
+%define	upstream_name	 Net-Akismet
+%define	upstream_version 0.05
 
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 1
+
 Summary:	Perl interface to Akismet - comment and trackback spam fighter 
-License:	GPL or Artistic
+License:	GPL+ or Artistic
 Group:		Development/Perl
-Source:		http://search.cpan.org/CPAN/authors/id/N/NI/NIKOLAY/%{module}-%{version}.tar.bz2
-Url:		http://search.cpan.org/dist/%{module}
-BuildRoot:	%{_tmppath}/%{name}-%{version}
-Buildrequires:	perl-devel
+Url:		http://search.cpan.org/dist/%{upstream_name}
+Source0:	http://search.cpan.org/CPAN/authors/id/N/NI/NIKOLAY/%{upstream_name}-%{upstream_version}.tar.bz2
+
 BuildRequires:	perl(LWP::UserAgent)
-Requires:	perl 
+Buildrequires:	perl-devel
 Buildarch:	noarch
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}
 
 %description
 Net::Akismet is a Perl interface to Akismet, a comment and trackback
 spam fighter.
 
 %prep
-%setup -q -n %{module}-%{version}
+%setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
